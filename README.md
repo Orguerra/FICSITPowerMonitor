@@ -55,7 +55,6 @@ Côté jeu, installer et configurer **Ficsit Remote Monitoring** pour une versio
 6. Pour le connecteur USB natif du S3 : activer **USB CDC On Boot > Enabled** ; le mode **Hardware CDC and JTAG** est pris en charge. Pour un pont USB-UART vers UART0 : laisser **USB CDC On Boot > Disabled**.
 7. Sélectionner le bon port, vérifier/compiler, puis téléverser.
 
-Les scripts Python, Node.js, les fichiers PHP, les dossiers de compilation et les sauvegardes `.before-*` ne sont pas nécessaires au téléversement.
 
 ## Première connexion et configuration
 
@@ -84,7 +83,7 @@ Un serveur dédié distant n’a pas directement accès au port COM du PC client
 
 Le boîtier demande `getPower`, puis les endpoints nécessaires aux options activées : `getResourceSink`, `getCloudInv`, `getStorageInv`, `getPlayer`, `getCrateInv` et `getVehicles`.
 
-Voir [USB_COM.md](USB_COM.md) pour les détails et la [documentation du protocole série FRM](https://docs.ficsit.app/ficsitremotemonitoring/latest/serial.html).
+Voir la [documentation du protocole série FRM](https://docs.ficsit.app/ficsitremotemonitoring/latest/serial.html).
 
 ## Mode Wi-Fi / HTTPS : export JSON
 
@@ -97,7 +96,7 @@ Ce mode nécessite un serveur qui transforme les données FRM en un export JSON 
 
 Les circuits utilisent notamment `id`, `consumption_mw`, `production_mw`, `capacity_mw`, `max_consumption_mw`, `battery_capacity_mwh`, `battery_percent`, `battery_input_mw`, `battery_output_mw`, `battery_differential_mw`, `battery_time_empty` et `fuse_triggered`.
 
-**Limite des fichiers serveur présents :** `monitor-export.php` est un module d’intégration ; `export.php.reference` est une référence. Ils ne constituent pas un serveur autonome. Ils dépendent notamment de la configuration et du module `includes/power-export.php` du projet serveur, non fournis dans ce dossier. Pour une installation sans ce serveur, utiliser le mode USB.
+Le service d’export se trouve dans le projet serveur séparé ; ses fichiers PHP ne sont pas inclus dans le dossier Arduino.
 
 La connexion HTTPS vérifie le certificat avec `ROOT_CA`, actuellement ISRG Root X2. Adapter cette autorité si votre hébergement utilise une autre chaîne de confiance. L’heure est synchronisée par NTP avant la collecte HTTPS.
 
@@ -160,11 +159,8 @@ Le mode **DEBUG** du portail simule les mesures, les batteries, les bons, le vé
 - `USBMonitor.h`, `SerialJSONFrame.h` : acquisition FRM par série et lecture des trames JSON.
 - `DisplaySchedule.h` : alternance des pages.
 - `ConnectionPulse.h`, `CouponFlashEvents.h`, `ColorSettings.h` : animations et couleurs.
-- `USB_COM.md` : guide de la liaison série.
-- `tests/`, `run_*_tests.cmd` et `test_*.py` : vérifications de comportements ciblés.
-- `MODIFICATIONS.md` : historique technique des modifications.
 
-Les scripts de tests Windows contiennent des chemins locaux à adapter. Par exemple, `run_usb_tests.cmd` utilise Visual Studio 2022 Community, le compilateur C++ MSVC et les en-têtes ArduinoJson. Ils ne sont pas nécessaires pour installer le moniteur. Les tests logiciels ne remplacent pas un essai sur la carte avec FRM.
+Le dossier contient uniquement les sources du firmware et ce guide. Les essais logiciels ne remplacent pas un essai sur la carte avec FRM.
 
 ## Licence
 
