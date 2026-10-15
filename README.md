@@ -105,7 +105,7 @@ La connexion HTTPS vérifie le certificat avec `ROOT_CA`, actuellement ISRG Root
 
 ### Énergie et circuits
 
-Le moniteur peut afficher un circuit, une sélection de circuits ou la somme des groupes indépendants. Le mode global exclut les identifiants spéciaux `800` et `900` pour éviter de les additionner aux groupes ordinaires. Le portail permet de personnaliser les noms.
+Le moniteur peut afficher un circuit, une sélection de circuits ou la somme de tous les groupes électriques fournis par FRM. Le mode global inclut tous les identifiants sans exclusion particulière. Le portail permet de personnaliser les noms.
 
 L’écran affiche la consommation, la capacité électrique et les batteries. Quand celles-ci se déchargent, il affiche leur état et leur autonomie. Pour plusieurs groupes de batteries, le pourcentage est pondéré par la capacité ; l’autonomie globale est estimée à partir de l’énergie stockée et de la décharge totale.
 
@@ -175,3 +175,4 @@ La licence recommandée pour ces sources est [PolyForm Noncommercial 1.0.0](http
 Cette licence reste à formaliser dans un fichier `LICENSE` ; cette recommandation ne constitue pas à elle seule une mise sous licence. MIT et GPL autorisent l’usage commercial et ne correspondent donc pas à l’objectif retenu.
 
 La licence choisie pour les sources du projet ne remplace pas celles des bibliothèques et composants tiers. Le projet est un outil communautaire indépendant pour Satisfactory.
+
